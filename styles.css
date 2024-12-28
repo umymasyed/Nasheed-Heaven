@@ -42,7 +42,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom:11px;
+    padding-bottom:3px;
 }
 
 .logo {

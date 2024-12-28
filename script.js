@@ -198,3 +198,38 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterForm.reset();
     });
 });
+const audioPlayer = document.getElementById('audioPlayer');
+
+// Set up Media Session API
+if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Nasheed Title',
+        artist: 'Artist Name',
+        album: 'Album Name',
+        artwork: [
+            { src: '/path-to-image.jpg', sizes: '96x96', type: 'image/png' },
+            { src: '/path-to-image.jpg', sizes: '128x128', type: 'image/png' },
+            { src: '/path-to-image.jpg', sizes: '192x192', type: 'image/png' },
+            { src: '/path-to-image.jpg', sizes: '256x256', type: 'image/png' },
+            { src: '/path-to-image.jpg', sizes: '384x384', type: 'image/png' },
+            { src: '/path-to-image.jpg', sizes: '512x512', type: 'image/png' },
+        ]
+    });
+
+    // Add media controls
+    navigator.mediaSession.setActionHandler('play', () => {
+        audioPlayer.play();
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+        audioPlayer.pause();
+    });
+    navigator.mediaSession.setActionHandler('seekbackward', () => {
+        audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 10, 0);
+    });
+    navigator.mediaSession.setActionHandler('seekforward', () => {
+        audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 10, audioPlayer.duration);
+    });
+}
+
+// Play audio automatically when loaded
+audioPlayer.play();

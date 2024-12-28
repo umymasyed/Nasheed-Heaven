@@ -91,7 +91,7 @@ nav ul li a:hover {
 
 @media (min-width: 768px) {
     .hero {
-        height: 70vh;
+        height: 30vh;
         background-image: url("hero-desktop.jpg");
     }
 }
@@ -277,11 +277,11 @@ nav ul li a:hover {
 
 @media (min-width: 768px) {
     .about h2 {
-        font-size: 1.2rem;
+        font-size: 3rem;
     }
 
-    #about p{
-        font-size: 0.8rem;
+    .about p{
+        font-size: 2.3rem;
     }
 }
 
@@ -423,7 +423,8 @@ footer {
 
     .player-container {
         padding: 1rem;
-    }
+        
+            }
 
     .album-art {
         width: 60px;
@@ -462,11 +463,11 @@ footer {
 
 @media (min-width: 768px) {
     .about-section h2 {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 
   .about-section p {
-        font-size: 0;
+        font-size: 1.8rem;
         line-height: 1.2;
     }
     .footer-section ul li a {

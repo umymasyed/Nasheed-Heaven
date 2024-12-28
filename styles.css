@@ -224,11 +224,15 @@ nav ul li a:hover {
     }
 
     .nasheed-item-info h4 {
-        font-size: 1.2rem; /* Smaller font size for title */
+        font-size: 1.2rem; 
+        padding-left :1rem;
+        ;/* Smaller font size for title */
     }
 
     .nasheed-item-info p {
-        font-size: 1rem; /* Smaller font size for artist name */
+        font-size: 1rem;
+        padding-left:1rem;
+        /* Smaller font size for artist name */
     }     
 }
 

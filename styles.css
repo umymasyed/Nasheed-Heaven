@@ -558,3 +558,58 @@ footer {
 #volume:focus {
     background: #ccc;
 }
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader p {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-family: Arial, sans-serif;
+}
+
+.loader .credit {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    opacity: 0.7;
+}

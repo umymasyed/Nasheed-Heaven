@@ -15,84 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletter-form');
 
     const nasheeds = [
-        {
-            id: 1,
-            title: "I Rise - Motivational Nasheed",
-            artist: "Muhammad al Muqit",
-            src: "/audio/I Rise - Motivational Nasheed - By Muhammad al Muqit.mp3",
-            img: "/images/i-rise.jpg",
-        },
-        {
-            id: 2,
-            title: "Ya Ilahi - Powerful Nasheed",
-            artist: "Ishaq Ayubi",
-            src: "/audio/Ya Ilahi - Powerful Nasheed By Ishaq Ayubi.mp3",
-            img: "/images/Yailahi.jpg",
-        },
-        {
-            id: 3,
-            title: "The Way of The Tears - Exclusive Nasheed",
-            artist: "Muhammad al Muqit",
-            src: "/audio/The Way of The Tears - Exclusive Nasheed - Muhammad al Muqit.mp3",
-            img: "/images/tears.jpg",
-        },
-        {
-            id: 4,
-            title: "The Beauty of Existence - Heart Touching Nasheed",
-            artist: "Muhammad al Muqit",
-            src: "/audio/The Beauty of Existence - Heart Touching Nasheed.mp3",
-            img: "/images/existence.jpg",
-        },
-        {
-            id: 5,
-            title: "My Hope (Allah) Nasheed",
-            artist: "Muhammad al Muqit",
-            src: "/audio/My Hope (Allah) Nasheed By Muhammad al Muqit.mp3",
-            img: "/images/myhope.jpg",
-        },
-        {
-            id: 6,
-            title: "Loyalty Nasheed",
-            artist: "Muhammad al Muqit",
-            src: "/audio/Loyalty Nasheed by Muhammad al Muqit.mp3",
-            img: "/images/loyalty.jpg",
-        },
+        { id: 1, title: "I Rise - Motivational Nasheed", artist: "Muhammad al Muqit", src: "/audio/I Rise - Motivational Nasheed - By Muhammad al Muqit.mp3", img: "/images/i-rise.jpg" },
+        { id: 2, title: "Ya Ilahi - Powerful Nasheed", artist: "Ishaq Ayubi", src: "/audio/Ya Ilahi - Powerful Nasheed By Ishaq Ayubi.mp3", img: "/images/Yailahi.jpg" },
+        { id: 3, title: "The Way of The Tears - Exclusive Nasheed", artist: "Muhammad al Muqit", src: "/audio/The Way of The Tears - Exclusive Nasheed - Muhammad al Muqit.mp3", img: "/images/tears.jpg" },
+        { id: 4, title: "The Beauty of Existence - Heart Touching Nasheed", artist: "Muhammad al Muqit", src: "/audio/The Beauty of Existence - Heart Touching Nasheed.mp3", img: "/images/existence.jpg" },
+        { id: 5, title: "My Hope (Allah) Nasheed", artist: "Muhammad al Muqit", src: "/audio/My Hope (Allah) Nasheed By Muhammad al Muqit.mp3", img: "/images/myhope.jpg" },
+        { id: 6, title: "Loyalty Nasheed", artist: "Muhammad al Muqit", src: "/audio/Loyalty Nasheed by Muhammad al Muqit.mp3", img: "/images/loyalty.jpg" },
+        { id: 7, title: "Maher Zain - Assalamu Alayka (Arabic)", artist: "Maher Zain", src: "/audio/Maher Zain - Assalamu Alayka (Arabic)  ماهر زين - السلام عليك  Official Lyric Video.mp3", img: "/images/asslam.jpg" },
+        { id: 8, title: "My Dream - Short Nasheed", artist: "Muhammad al Muqit", src: "/audio/My Dream - Short Nasheed By_ Muhammad al Muqit.mp3", img: "/images/dream.jpg" },
+        { id: 9, title: "Muhammad Nabina - Hamada Helal", artist: "Hamada Helal", src: "/audio/Muhammad Nabina - Hamada Helal - Lirik dan Terjemahan Indonesia Sholawat Nabi.mp3", img: "/images/nabina.jpg" },
+        { id: 10, title: "Al Quds Lana Aqsa Nasheed 2023", artist: "Abdullah Mehboob Faris", src: "/audio/Al Quds Lana  Aqsa Nasheed 2023  Labbaik  Abdullah Mehboob  Faris.mp3", img: "/images/Quds.jpg" },
+        { id: 11, title: "ANTA NUURUL LAAHI FAJRAN", artist: "Maher Zain", src: "/audio/ANTA NUURUL LAAHI FAJRAN.mp3", img: "/images/anta-noor.jpg" },
     ];
 
     let currentNasheedIndex = 0;
 
-    // Toggle mobile menu
-    menuToggle.addEventListener('click', () => {
-        navUl.classList.toggle('show');
-    });
+    menuToggle.addEventListener('click', () => navUl.classList.toggle('show'));
 
-    // Initialize nasheed player
     function loadNasheed(index) {
         const nasheed = nasheeds[index];
         if (!nasheed) return;
-
-        // Pause the current audio
         audio.pause();
-
-        // Update audio source
         audio.src = nasheed.src;
-        audio.load(); // Reload the audio file
-
-        // Update song information
+        audio.load();
         songTitle.textContent = nasheed.title;
         artist.textContent = nasheed.artist;
-
-        // Update the image dynamically
         const songImage = document.querySelector('.album-art');
         if (songImage) {
             songImage.src = nasheed.img;
             songImage.alt = nasheed.title;
         }
-
-        // Update current nasheed index
         currentNasheedIndex = index;
-
-        // Update media session metadata
         updateMediaSessionMetadata(nasheed);
     }
 
@@ -102,39 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: nasheed.title,
                 artist: nasheed.artist,
                 album: 'Nasheed Haven',
-                artwork: [
-                    { src: nasheed.img, sizes: '96x96', type: 'image/png' },
-                    { src: nasheed.img, sizes: '128x128', type: 'image/png' },
-                    { src: nasheed.img, sizes: '192x192', type: 'image/png' },
-                    { src: nasheed.img, sizes: '256x256', type: 'image/png' },
-                    { src: nasheed.img, sizes: '512x512', type: 'image/png' },
-                ]
-            });
-
-            navigator.mediaSession.setActionHandler('play', () => {
-                audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            });
-
-            navigator.mediaSession.setActionHandler('pause', () => {
-                audio.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-            });
-
-            navigator.mediaSession.setActionHandler('seekbackward', () => {
-                audio.currentTime = Math.max(audio.currentTime - 10, 0);
-            });
-
-            navigator.mediaSession.setActionHandler('seekforward', () => {
-                audio.currentTime = Math.min(audio.currentTime + 10, audio.duration);
+                artwork: [{ src: nasheed.img, sizes: '512x512', type: 'image/png' }]
             });
         }
     }
 
-    // Play/Pause functionality
     playBtn.addEventListener('click', () => {
         if (audio.paused) {
-            audio.play().catch(err => console.error("Playback error:", err));
+            audio.play();
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
         } else {
             audio.pause();
@@ -142,14 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Stop functionality
     stopBtn.addEventListener('click', () => {
         audio.pause();
-        audio.currentTime = 0; // Reset to the start
+        audio.currentTime = 0;
         playBtn.innerHTML = '<i class="fas fa-play"></i>';
     });
 
-    // Previous nasheed
     prevBtn.addEventListener('click', () => {
         currentNasheedIndex = (currentNasheedIndex - 1 + nasheeds.length) % nasheeds.length;
         loadNasheed(currentNasheedIndex);
@@ -157,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     });
 
-    // Next nasheed
     nextBtn.addEventListener('click', () => {
         currentNasheedIndex = (currentNasheedIndex + 1) % nasheeds.length;
         loadNasheed(currentNasheedIndex);
@@ -165,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     });
 
-    // Update progress bar
     audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
             const progress = (audio.currentTime / audio.duration) * 100;
@@ -173,46 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Volume control
     volumeSlider.addEventListener('input', () => {
         audio.volume = volumeSlider.value;
-        updateVolumeIcon();
     });
 
-    function updateVolumeIcon() {
-        if (audio.volume > 0.5) {
-            volumeIcon.className = 'fas fa-volume-up';
-        } else if (audio.volume > 0) {
-            volumeIcon.className = 'fas fa-volume-down';
-        } else {
-            volumeIcon.className = 'fas fa-volume-mute';
-        }
-    }
-
-    // Mute/Unmute
     volumeIcon.addEventListener('click', () => {
-        if (audio.volume > 0) {
-            audio.volume = 0;
-            volumeSlider.value = 0;
-        } else {
-            audio.volume = 1;
-            volumeSlider.value = 1;
-        }
-        updateVolumeIcon();
+        audio.volume = audio.volume > 0 ? 0 : 1;
+        volumeSlider.value = audio.volume;
     });
 
-    // Generate featured nasheeds
     function generateFeaturedNasheeds() {
         nasheeds.forEach(nasheed => {
             const nasheedItem = document.createElement('div');
-            nasheedItem.classList.add('nasheed-item', 'animate-slide-in');
-            nasheedItem.innerHTML = `
-                <img src="${nasheed.img}" alt="${nasheed.title}">
-                <div class="nasheed-item-info">
-                    <h4>${nasheed.title}</h4>
-                    <p>${nasheed.artist}</p>
-                </div>
-            `;
+            nasheedItem.classList.add('nasheed-item');
+            nasheedItem.innerHTML = `<img src="${nasheed.img}" alt="${nasheed.title}"><h4>${nasheed.title}</h4><p>${nasheed.artist}</p>`;
             nasheedItem.addEventListener('click', () => {
                 loadNasheed(nasheeds.indexOf(nasheed));
                 audio.play();
@@ -224,15 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateFeaturedNasheeds();
 
-    // Newsletter form submission
     newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = newsletterForm.querySelector('input[type="email"]').value;
-        console.log(`Subscribed with email: ${email}`);
         alert('Thank you for subscribing to our newsletter!');
         newsletterForm.reset();
     });
 
-    // Load first nasheed by default
     loadNasheed(currentNasheedIndex);
+
+    const loader = document.getElementById('loader');
+    setTimeout(() => loader.classList.add('hidden'), 500);
 });

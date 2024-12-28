@@ -224,11 +224,11 @@ nav ul li a:hover {
     }
 
     .nasheed-item-info h4 {
-        font-size: 2rem; /* Smaller font size for title */
+        font-size: 1.4rem; /* Smaller font size for title */
     }
 
     .nasheed-item-info p {
-        font-size: 1.8rem; /* Smaller font size for artist name */
+        font-size: 1rem; /* Smaller font size for artist name */
     }     
 }
 
@@ -277,11 +277,11 @@ nav ul li a:hover {
 
 @media (min-width: 768px) {
     .about h2 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .about p{
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
 }
 

@@ -4,8 +4,8 @@
   "description": "A collection of beautiful Nasheeds",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "black",
-  "theme_color": "#000000",
+  "background_color": "#1A1A1A",
+  "theme_color": "#262626",
   "icons": [
     {
       "src": "icon.png",
@@ -17,5 +17,8 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "/",
+  "orientation": "portrait",
+  "prefer_related_applications": false
 }
